@@ -10,7 +10,7 @@
 import json
 from together.utils import check_file
 
-dataset = "MathInstruct-500"
+dataset = "MathInstruct-125k"
 old_file_path = f"{dataset}.json"
 new_file_path = f"Formatted{dataset}.jsonl"
 
@@ -27,14 +27,14 @@ llama_format = """
 {model_answer}<|eot_id|>
 """
 formatted_data = []
-system_prompt = "You're a helpful medical doctor who answers questions."
+system_prompt = "You're a helpful assistant that answers math problems."
 
 # Transform the data into the right format and write it to a JSONL file
 with open(new_file_path, "w", encoding="utf-8") as new_file:
     for piece in old_data:
         temp_data = {
             "text": llama_format.format(
-                system_prompt="You're a helpful medical doctor who answers questions.",
+                system_prompt=system_prompt,
                 user_question=piece["instruction"],
                 model_answer=piece["output"],
             )

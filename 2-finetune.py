@@ -6,7 +6,7 @@ import os
 from together import Together
 
 client = Together(api_key=os.environ.get("TOGETHER_API_KEY"))
-dataset = "MathInstruct-500"
+dataset = "MathInstruct-125k"
 
 # Upload your formatted data and get back the file ID
 response = client.files.upload(file=f"Formatted{dataset}.jsonl")
@@ -18,7 +18,7 @@ print(file_metadata)
 
 # Trigger fine-tuning job
 resp = client.fine_tuning.create(
-    suffix="mathinstruct-500",
+    suffix="mathinstruct-125k-v2",
     model="meta-llama/Meta-Llama-3-8B-Instruct",
     training_file=fileId,
     n_epochs=3,
