@@ -8,3 +8,4 @@ This repo helps you fine-tune Llama-3 on your own data. In this example, we'll b
 2. [Optional] Make an account with Weights and Biases and save your API key as `WANDB_API_KEY`
 3. Run `1-transform.py` to do some data cleaning and get it into a format Together accepts
 4. Run `2-finetune.py` to upload the dataset and start the fine-tuning job on Together
+5. Run `3-eval.py` to evaluate the fine-tuned model against a base model and get accuracy
