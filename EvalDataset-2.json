@@ -1,0 +1,12 @@
+[
+  {
+    "source": "data/CoT/aqua_rat.json",
+    "instruction": "Of the families in City X in 1992, 30 percent owned a personal computer. The number of families in City X owning a computer in 1999 was 50 percent greater than it was in 1992, and the total number of families in City X was 5 percent greater in 1999 than it was in 1994. what percent of the families in City X owned a personal computer in 1999?\nAnswer Choices: (A) 43% (B) 42.85% (C) 45.25% (D) 46.23% (E) 41.66%",
+    "output": "Let's think about the multi-choice question step by step.\nSay a 100 families existed in 1992 then the number of families owning a computer in 1992 - 30\nNumber of families owning computer in 1999 = 30 * 150/100 = 45\nNumber of families in 1999 = 105\nThe percentage = 45/105 * 100 = 42.85%.\nThe answer is B"
+  },
+  {
+    "source": "data/CoT/math50k_camel.json",
+    "instruction": "Determine if the function $f(z)=z^2-2z+3$ is analytic at $z=1+2i$. If it is analytic, find its derivative at that point.",
+    "output": "To determine if the function is analytic, we first need to check if it is differentiable. Since $f(z) = z^2 - 2z + 3$ is a polynomial function, it is differentiable everywhere in the complex plane, including at $z = 1 + 2i$. Therefore, the function is analytic at $z = 1 + 2i$.\n\nNow, let's find the derivative of the function:\n\n$f'(z) = \\frac{d}{dz}(z^2 - 2z + 3) = 2z - 2$\n\nNow, we can evaluate the derivative at the point $z = 1 + 2i$:\n\n$f'(1 + 2i) = 2(1 + 2i) - 2 = 2 + 4i - 2 = 4i$\n\nSo, the derivative of the function $f(z) = z^2 - 2z + 3$ at the point $z = 1 + 2i$ is $f'(1 + 2i) = 4i$."
+  }
+]
