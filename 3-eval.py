@@ -8,6 +8,10 @@ import os
 
 client = Together(api_key=os.environ.get("TOGETHER_API_KEY"))
 
+base_model = "meta-llama/Llama-3-8b-chat-hf"
+finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-wandb-2024-06-19-20-47-17-4b51b635"
+evaluator_model = "meta-llama/Llama-3-70b-chat-hf"
+
 # 1. Get all responses for the eval dataset
 with open("EvalDataset-100.json", "r", encoding="utf-8") as eval_file:
     eval_data = json.load(eval_file)
@@ -23,7 +27,7 @@ for example in eval_data:
             },
             {"role": "user", "content": example["instruction"]},
         ],
-        model="meta-llama/Llama-3-8b-chat-hf",
+        model=base_model,
         max_tokens=2000,
     )
 
@@ -35,7 +39,7 @@ for example in eval_data:
             },
             {"role": "user", "content": example["instruction"]},
         ],
-        model="hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-wandb-2024-06-19-20-47-17-4b51b635",
+        model=finetuned_model,
         max_tokens=2000,
     )
 
@@ -76,7 +80,7 @@ for result in results:
                   """,
                 },
             ],
-            model="meta-llama/Llama-3-70b-chat-hf",
+            model=evaluator_model,
         )
         if baseModelAnswer.choices[0].message.content == "ACCURATE":
             baseModelCount += 1
@@ -106,7 +110,7 @@ for result in results:
                   """,
                 },
             ],
-            model="meta-llama/Llama-3-70b-chat-hf",
+            model=evaluator_model,
         )
         if fineTunedModelAnswer.choices[0].message.content == "ACCURATE":
             fineTunedModelCount += 1
