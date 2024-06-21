@@ -1,6 +1,4 @@
-# PART 3
-
-# An evaluation script to test the accuracy of the fine-tuned model vs the base model.
+# PART 3 – an evaluation script to test the accuracy of the fine-tuned model vs the base model.
 
 import json
 from together import Together
@@ -9,7 +7,7 @@ import os
 client = Together(api_key=os.environ.get("TOGETHER_API_KEY"))
 
 base_model = "meta-llama/Llama-3-8b-chat-hf"
-finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-wandb-2024-06-19-20-47-17-4b51b635"
+finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-v2-2024-06-20-17-54-50-f40b62b6"
 evaluator_model = "meta-llama/Llama-3-70b-chat-hf"
 
 # 1. Get all responses for the eval dataset
@@ -23,7 +21,7 @@ for example in eval_data:
         messages=[
             {
                 "role": "system",
-                "content": "You're a helpful medical doctor who answers questions.",
+                "content": "You're a helpful assistant that answers math problems.",
             },
             {"role": "user", "content": example["instruction"]},
         ],
@@ -35,7 +33,7 @@ for example in eval_data:
         messages=[
             {
                 "role": "system",
-                "content": "You're a helpful medical doctor who answers questions.",
+                "content": "You're a helpful assistant that answers math problems.",
             },
             {"role": "user", "content": example["instruction"]},
         ],
@@ -58,6 +56,7 @@ with open("results.json", "w", encoding="utf-8") as results_file:
 baseModelCount = 0
 fineTunedModelCount = 0
 badResponses = 0
+eval_prompt = "You will be given a ground truth answer and a model answer. Please output ACCURATE if the model answer matches the ground truth answer or INACCURATE otherwise. Please only return ACCURATE or INACCURATE. It is very important for my job that you do this."
 
 for result in results:
     try:
@@ -65,7 +64,7 @@ for result in results:
             messages=[
                 {
                     "role": "system",
-                    "content": "You will be given a ground truth answer and a model answer. Please output ACCURATE if the model answer matches the ground truth answer or INACCURATE otherwise. Please only return ACCURATE or INACCURATE. It is very important for my job that you do this.",
+                    "content": eval_prompt,
                 },
                 {
                     "role": "user",
@@ -95,7 +94,7 @@ for result in results:
             messages=[
                 {
                     "role": "system",
-                    "content": "You will be given a ground truth answer and a model answer. Please output ACCURATE if the model answer matches the ground truth answer or INACCURATE otherwise. Please only return ACCURATE or INACCURATE. It is very important for my job that you do this.",
+                    "content": eval_prompt,
                 },
                 {
                     "role": "user",

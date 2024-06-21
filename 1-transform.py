@@ -1,16 +1,9 @@
-# Finetuning Llama-3 on your own data
-
-# INTRO
-
-# In this guide, we're going to take the MathInstruct dataset and fine-tune Llama-3 on it.
-# Add link to the dataset HERE
-
-# PART 1
+# PART 1 – Finetuning Llama-3 on your own data (transforming data)
 
 import json
 from together.utils import check_file
 
-dataset = "MathInstruct-125k"
+dataset = "MathInstruct-500"
 old_file_path = f"{dataset}.json"
 new_file_path = f"Formatted{dataset}.jsonl"
 
