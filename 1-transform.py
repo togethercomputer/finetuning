@@ -3,9 +3,9 @@
 import json
 from together.utils import check_file
 
-dataset = "MathInstruct-500"
-old_file_path = f"{dataset}.json"
-new_file_path = f"Formatted{dataset}.jsonl"
+datasetName = "MathInstruct-1k"
+old_file_path = f"datasets/{datasetName}.json"
+new_file_path = f"Formatted{datasetName}.jsonl"
 
 # Load old format JSON data
 with open(old_file_path, "r", encoding="utf-8") as old_file:

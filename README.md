@@ -11,9 +11,29 @@ We'll go through data cleaning, uploading your dataset, fine-tuning LLama-3-8B o
 3. Run `1-transform.py` to do some data cleaning and get it into a format Together accepts
 4. Run `2-finetune.py` to upload the dataset and start the fine-tuning job on Together
 5. Run `3-eval.py` to evaluate the fine-tuned model against a base model and get accuracy
+6. Optionally run `4-advanced-eval.py` to run the model against other models like GPT-4 as well
 
 ## Results
 
-After fine-tuning Llama-3-8B on 125k math problems from the MathInstruct dataset, we ran 100 new math problems through to compare. The fine-tuned model was 79% accurate, up from 46% accuracy of the base model. Also worth noting that the fine-tuned model produces results that were more succint & better overall.
+After fine-tuning Llama-3-8B on 125k math problems from the MathInstruct dataset, we ran an eval of 1000 new math problems through to compare. Here were the results:
+
+- Base model (Llama-3-8b): 46%
+- Top OSS model (Llama-3-70b): 65.8%
+- GPT-4o: 73.0%
+- Fine-tuned model: 79%
 
 Link to full blog post:
+
+### First 500:
+
+Base model (Llama-3-8b): 52.400000000000006%
+Top OSS model (Llama-3-70b): 65.8%
+GPT-4o: 73.0%
+Fine-tuned model: 60.6%
+
+### Second 500:
+
+Base model: 51.4%
+Top OSS model: 67%
+GPT-4o: 75%
+Fine-tuned model: 60.2%

@@ -1,7 +1,7 @@
 # [OPTIONAL] PART 4 – an evaluation script to test the accuracy of the fine-tuned model vs the base model and other state of the art models.
 
 import json
-from together import Together, AsyncTogether
+from together import AsyncTogether
 from openai import AsyncOpenAI
 import os
 import asyncio
@@ -15,7 +15,8 @@ top_oss_model = "meta-llama/Llama-3-70b-chat-hf"
 top_gpt_model = "gpt-4o"
 finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-v2-2024-06-20-17-54-50-f40b62b6"
 evaluator_model = "meta-llama/Llama-3-70b-chat-hf"
-eval_dataset = "EvalDataset-5.json"
+eval_dataset = "EvalDataset-500-v2.json"
+
 
 async def chatCompletion(model, instruction):
     completion = await async_together_client.chat.completions.create(
@@ -111,11 +112,20 @@ async def main():
 
     for result in results:
         try:
-            baseModelCount_inc, topOSSModelCount_inc, gptModelCount_inc, fineTunedModelCount_inc = await asyncio.gather(
+            (
+                baseModelCount_inc,
+                topOSSModelCount_inc,
+                gptModelCount_inc,
+                fineTunedModelCount_inc,
+            ) = await asyncio.gather(
                 evalCompletion(result["groundTruthAnswer"], result["baseModelAnswer"]),
-                evalCompletion(result["groundTruthAnswer"], result["topOSSModelAnswer"]),
+                evalCompletion(
+                    result["groundTruthAnswer"], result["topOSSModelAnswer"]
+                ),
                 evalCompletion(result["groundTruthAnswer"], result["topGptAnswer"]),
-                evalCompletion(result["groundTruthAnswer"], result["fineTunedModelAnswer"])
+                evalCompletion(
+                    result["groundTruthAnswer"], result["fineTunedModelAnswer"]
+                ),
             )
 
             baseModelCount += baseModelCount_inc[0]
@@ -123,8 +133,12 @@ async def main():
             gptModelCount += gptModelCount_inc[0]
             fineTunedModelCount += fineTunedModelCount_inc[0]
 
-            badResponses += (baseModelCount_inc[1] + topOSSModelCount_inc[1] +
-                             gptModelCount_inc[1] + fineTunedModelCount_inc[1])
+            badResponses += (
+                baseModelCount_inc[1]
+                + topOSSModelCount_inc[1]
+                + gptModelCount_inc[1]
+                + fineTunedModelCount_inc[1]
+            )
         except Exception as e:
             numErrors += 1
             print("Error in response: ", e)
@@ -148,5 +162,6 @@ async def main():
     end_time = time.time()  # End timing
     total_time = end_time - start_time
     print(f"\nTotal execution time: {total_time:.2f} seconds")
+
 
 asyncio.run(main())
