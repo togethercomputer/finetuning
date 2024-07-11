@@ -3,14 +3,13 @@
 import json
 from together.utils import check_file
 
-datasetName = "MathInstruct-1k"
-old_file_path = f"datasets/{datasetName}.json"
+datasetName = "TrainMathInstruct-500"
+old_file_path = f"{datasetName}.json"
 new_file_path = f"Formatted{datasetName}.jsonl"
 
 # Load old format JSON data
 with open(old_file_path, "r", encoding="utf-8") as old_file:
     old_data = json.load(old_file)
-
 
 # Define Llama-3 prompt and system prompt
 llama_format = """

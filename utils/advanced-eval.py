@@ -1,4 +1,4 @@
-# [OPTIONAL] PART 4 – an evaluation script to test the accuracy of the fine-tuned model vs the base model and other state of the art models.
+# [OPTIONAL] An evaluation script to test the accuracy of the fine-tuned model vs the base model, and Llama-3-70B + GPT-4o
 
 import json
 from together import AsyncTogether
@@ -13,9 +13,9 @@ async_openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 base_model = "meta-llama/Llama-3-8b-chat-hf"
 top_oss_model = "meta-llama/Llama-3-70b-chat-hf"
 top_gpt_model = "gpt-4o"
-finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-125k-v2-2024-06-20-17-54-50-f40b62b6"
+finetuned_model = "hassan@together.ai/Meta-Llama-3-8B-Instruct-mathinstruct-207k-e3-last-2024-07-09-17-07-32-02912d97"
 evaluator_model = "meta-llama/Llama-3-70b-chat-hf"
-eval_dataset = "EvalDataset-500-v2.json"
+eval_dataset = "EvalMathInstruct-500-2.json"
 
 
 async def chatCompletion(model, instruction):
