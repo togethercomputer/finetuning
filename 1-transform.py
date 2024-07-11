@@ -1,4 +1,5 @@
 # PART 1 – Finetuning Llama-3 on your own data (transforming data)
+# Make sure to run `pip install together`
 
 import json
 from together.utils import check_file

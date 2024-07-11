@@ -7,11 +7,12 @@ We'll go through data cleaning, uploading your dataset, fine-tuning LLama-3-8B o
 ## Fine-tuning Llama-3 on MathInstruct
 
 1. Make an account at [Together AI](https://www.together.ai/) and save your API key as an OS variable called `TOGETHER_API_KEY`.
-2. [Optional] Make an account with Weights and Biases and save your API key as `WANDB_API_KEY`.
-3. Run `1-transform.py` to do some data cleaning and get it into a format Together accepts.
-4. Run `2-finetune.py` to upload the dataset and start the fine-tuning job on Together.
-5. Run `3-eval.py` to evaluate the fine-tuned model against a base model and get accuracy.
-6. [Optional] Run `utils/advanced-eval.py` to run the model against other models like GPT-4 as well.
+2. Install the Together AI python library by running `pip install together`.
+3. [Optional] Make an account with Weights and Biases and save your API key as `WANDB_API_KEY`.
+4. Run `1-transform.py` to do some data cleaning and get it into a format Together accepts.
+5. Run `2-finetune.py` to upload the dataset and start the fine-tuning job on Together.
+6. Run `3-eval.py` to evaluate the fine-tuned model against a base model and get accuracy.
+7. [Optional] Run `utils/advanced-eval.py` to run the model against other models like GPT-4 as well.
 
 ## Results
 
