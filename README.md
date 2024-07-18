@@ -14,7 +14,7 @@ We'll go through data cleaning, uploading your dataset, fine-tuning LLama-3-8B o
 6. Run `3-eval.py` to evaluate the fine-tuned model against a base model and get accuracy.
 7. [Optional - Fast Eval] Run `utils/fast-eval.py` as replacement of `3-eval.py`, taking benefit of higher rate-limits.
 8. [Optional] Run `utils/advanced-eval.py` to run the model against other models like GPT-4 as well.
-9. [Optional - Fast Advance Eval] Run `utils/fast-advanced-eval.py` as replacement of `utils/advanced-eval.py` taking benefit of high rate-limits.
+9. [Optional - Fast Advanced Eval] Run `utils/fast-advanced-eval.py` as replacement of `utils/advanced-eval.py` taking benefit of higher rate-limits.
 
 ## Results
 
