@@ -11,7 +11,7 @@ base_model = "meta-llama/Llama-3-8b-chat-hf"
 top_oss_model = "meta-llama/Llama-3-70b-chat-hf"
 finetuned_model = "YOUR_FINETUNED_MODEL_ID"
 evaluator_model = "meta-llama/Llama-3-70b-chat-hf"
-eval_dataset = "EvalMathInstruct-100.json"
+eval_dataset = "EvalDataset-100.json"
 
 
 async def chatCompletion(model, instruction):
